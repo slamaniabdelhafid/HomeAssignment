@@ -1,37 +1,35 @@
+#include <fstream>
 #include <iostream>
 
-#include <fstream>
+void assignment2a(const char* file_path) {
+    std::ifstream file(file_path, std::ios::binary);
 
-#include <vector>
+    if (!file) {
+        std::cerr << "Error opening file: " << file_path << std::endl;
+        return;
+    }
 
-int main() {
+    file.seekg(0, std::ios::end);
+    std::streampos file_size = file.tellg();
+    file.seekg(0, std::ios::beg);
 
-const char* filename = "a.out";
+    char* data = new char[file_size];
 
-// Open the file in binary mode
+    file.read(data, file_size);
 
-std::ifstream file(filename, std::ios::binary);
+    for (std::streampos i = 0; i < file_size / 2; ++i) {
+        char temp = data[i];
+        data[i] = data[file_size - i - 1];
+        data[file_size - i - 1] = temp;
+    }
 
-if (!file.is_open()) {
+    std::ofstream new_file("reversed_file.bin", std::ios::binary);
+    new_file.write(data, file_size);
 
-std::cerr <<<<< "Error opening file: " << filename << std::endl;
-
-return 1;
-
+    delete[] data;
 }
 
-// Get the file size
-
-file.seekg (0, std::ios::end);
-
-std::streamsize fileSize = file.tellg(); file.seekg(0, std::ios::beg);
-
-// Allocate a vector to hold the file contents
-
-std::vector<char> buffer(fileSize);
-
-// Read the file into the vector
-
-if (!file.read(buffer.data(), fileSize)) {
-
-std::cerr <<< "Error reading file" << std::endl;
+int main() {
+    assignment2a("original_file.bin");
+    return 0;
+}
