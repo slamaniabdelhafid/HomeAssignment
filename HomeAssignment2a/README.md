@@ -3,7 +3,12 @@
 </br>group 24.B83-mm 
 </br>st130302@student.spbu.ru
 
- build :use `make` command
+Build: make
+
+Run:./myProg
+
+Here i basically opened a binary file, checkedit size and assigned arrays
+
+This file contains my name, group,and email.
 
  launch: run `./main` executable 
- </br>this is my HomeAssingnment2a , i use make command to build , and the ./main to execute the program 
