@@ -1,36 +1,51 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
-#include <fstream>
-#include <iostream>
-
-void assignment2a(const char* file_path) {
-    std::ifstream file(file_path, std::ios::binary);
-
-    if (!file) {
-        std::cerr << "Error opening file: " << file_path << std::endl;
-        return;
-    }
-
-    file.seekg(0, std::ios::end);
-    std::streampos file_size = file.tellg();
-    file.seekg(0, std::ios::beg);
-
-    char* data = new char[file_size];
-
-    file.read(data, file_size);
-
-    for (std::streampos i = 0; i < file_size / 2; ++i) {
-        char temp = data[i];
-        data[i] = data[file_size - i - 1];
-        data[file_size - i - 1] = temp;
-    }
-
-    std::ofstream new_file("reversed_file.bin", std::ios::binary);
-    new_file.write(data, file_size);
-
-    delete[] data;
-}
+#include "header.h"
 
 int main() {
-    assignment2a("original_file.bin");
-    return 0;
+    // creating file path
+    const char* inputFile = "input.bin";
+    const char* outputFile = "output.bin";
+    
+    //: Opening the binary file using the provided format
+    std::ifstream infile;
+    infile.open(inputFile, std::ios::binary | std::ios::in);
+    if (!infile) {
+        std::cerr << "There is an error opening input file!" << std::endl;
+        return 1;
+    }
+
+    std::size_t fileSize = std::filesystem::file_size(inputFile);
+
+    std::cout << "File size: " << fileSize << " bytes" << std::endl;
+
+    //Dynamically allocate an array to hold file data
+    char* buffer = new char[fileSize];
+
+    //Read the file using the provided format
+    infile.read((char*)buffer, fileSize);
+    infile.close();
+
+    // Reverse the array in-place
+	for (std::size_t i = 0; i < fileSize / 2; ++i) {
+        std::swap(buffer[i], buffer[fileSize - 1 - i]);
+    }
+
+    //Open the output file and write the reversed array using the provided format
+	std::ofstream outfile;
+	outfile.open(outputFile, std::ios::binary | std::ios::out);
+	if (!outfile) {
+        std::cerr << "there is an error opening output file!" << std::endl;
+        delete[] buffer; // Cleanup before exiting
+        return 1;
+    }
+
+	outfile.write((char*)buffer, fileSize);
+	outfile.close();
+
+    // Clean up dynamically allocated memory
+	delete[] buffer;
+
+	std::cout << "File reversed and saved to output.bin!" << std::endl;
+
+	return 0;
 }
