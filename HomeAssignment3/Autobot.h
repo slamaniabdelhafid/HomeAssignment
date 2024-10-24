@@ -5,17 +5,8 @@
 
 class Autobot : public Transformer {
 public:
-	Autobot(Gun* gun, Weapon* weapon, const std::string& name);
-	~Autobot();
-
-	bool transform();
-	bool attack();
-
-	void setName(const std::string& name);
-	std::string getName() const;
-
-private:
-	std::string _name;
+    Autobot();
+    bool transform();
 };
 
 #endif // AUTOBOT_H

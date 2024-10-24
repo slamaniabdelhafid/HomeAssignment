@@ -1,17 +1,7 @@
 #include "Decepticon.h"
 
-Decepticon::Decepticon(Gun* gun, Weapon* weapon, const std::string& type)
-    : Transformer(gun, weapon), _type(type) {}
-
-Decepticon::~Decepticon() {}
+Decepticon::Decepticon() {}
 
 bool Decepticon::transform() {
-    return true; // Plug
+    return true;
 }
-
-bool Decepticon::ambush() {
-    return true; // Plug
-}
-
-void Decepticon::setType(const std::string& type) {
-   

@@ -5,17 +5,8 @@
 
 class Decepticon : public Transformer {
 public:
-	Decepticon(Gun* gun, Weapon* weapon, const std::string& type);
-	~Decepticon();
-
-	bool transform();
-	bool ambush();
-
-	void setType(const std::string& type);
-	std::string getType() const;
-
-private:
-	std::string _type;
+    Decepticon();
+    bool transform();
 };
 
 #endif // DECEPTICON_H
