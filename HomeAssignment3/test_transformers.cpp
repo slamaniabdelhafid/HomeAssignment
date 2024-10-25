@@ -1,28 +1,22 @@
 #include <gtest/gtest.h>
-#include "Transformer.h"
 #include "Autobot.h"
 #include "Decepticon.h"
-#include "VehicleTransformer.h"
 
-TEST(TransformerTest, DefaultValues) {
-    Transformer t;
-    EXPECT_EQ(t.getLevel(), 0);
-    EXPECT_EQ(t.getStrength(), 0);
+TEST(TransformerTest, AutobotTransform) {
+    Autobot autobot;
+    EXPECT_TRUE(autobot.transform());
 }
 
-TEST(AutobotTest, Transform) {
-    Autobot a;
-    EXPECT_TRUE(a.transform());
+TEST(TransformerTest, DecepticonTransform) {
+    Decepticon decepticon;
+    EXPECT_TRUE(decepticon.transform());
 }
 
-TEST(DecepticonTest, Transform) {
-    Decepticon d;
-    EXPECT_TRUE(d.transform());
-}
-
-TEST(VehicleTransformerTest, Drive) {
-    VehicleTransformer v;
-    EXPECT_TRUE(v.drive());
+TEST(WeaponTest, WeaponType) {
+    Weapon weapon("Laser");
+    EXPECT_EQ(weapon.getType(), "Laser");
+    weapon.setType("Cannon");
+    EXPECT_EQ(weapon.getType(), "Cannon");
 }
 
 int main(int argc, char **argv) {

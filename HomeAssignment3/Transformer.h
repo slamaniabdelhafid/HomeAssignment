@@ -3,7 +3,15 @@
 
 #include <string>
 
-class Gun; // Gun Class Preliminary Announcement
+class Weapon {
+public:
+    Weapon(std::string type);
+    std::string getType();
+    void setType(std::string type);
+
+private:
+    std::string _type;
+};
 
 class Transformer {
 public:
@@ -14,26 +22,20 @@ public:
     bool turn(int dir);
     bool jump();
     bool fire();
-    bool ultimate();
-    bool transform();
+	virtual bool transform() = 0;
 
     // Getters and Setters
+    uint getLevel();
     void setLevel(uint level);
-    uint getLevel() const;
-
+    uint getStrength();
     void setStrength(uint strength);
-    uint getStrength() const;
 
-    void setRange(uint range);
-    uint getRange() const;
-
-private:
+protected:
     uint _level;
     uint _strength;
-    uint _range;
     uint _fuel;
     uint _ammo;
-    Gun* _gun; // Association
+    Weapon _weapon; // Composition
 };
 
 #endif // TRANSFORMER_H

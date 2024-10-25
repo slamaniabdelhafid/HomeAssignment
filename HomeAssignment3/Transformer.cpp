@@ -1,6 +1,16 @@
 #include "Transformer.h"
 
-Transformer::Transformer() : _level(0), _strength(0), _range(0), _fuel(0), _ammo(0), _gun(nullptr) {}
+Weapon::Weapon(std::string type) : _type(type) {}
+
+std::string Weapon::getType() {
+    return _type;
+}
+
+void Weapon::setType(std::string type) {
+    _type = type;
+}
+
+Transformer::Transformer() : _level(1), _strength(100), _fuel(100), _ammo(10), _weapon("Laser") {}
 
 Transformer::~Transformer() {}
 
@@ -21,34 +31,18 @@ bool Transformer::fire() {
     return true;
 }
 
-bool Transformer::ultimate() {
-    return true;
-}
-
-bool Transformer::transform() {
-    return true;
+uint Transformer::getLevel() {
+    return _level;
 }
 
 void Transformer::setLevel(uint level) {
     _level = level;
 }
 
-uint Transformer::getLevel() const {
-    return _level;
+uint Transformer::getStrength() {
+    return _strength;
 }
 
 void Transformer::setStrength(uint strength) {
     _strength = strength;
-}
-
-uint Transformer::getStrength() const {
-    return _strength;
-}
-
-void Transformer::setRange(uint range) {
-    _range = range;
-}
-
-uint Transformer::getRange() const {
-    return _range;
 }

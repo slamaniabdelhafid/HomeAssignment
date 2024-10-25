@@ -6,7 +6,7 @@
 class Autobot : public Transformer {
 public:
     Autobot();
-    bool transform();
+    bool transform() override;
 };
 
 #endif // AUTOBOT_H
