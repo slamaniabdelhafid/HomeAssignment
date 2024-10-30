@@ -1,38 +1,19 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 #include "Transformer.h"
 
-Weapon::Weapon(std::string type) : _type(type) {}
+Weapon::Weapon(const std::string &name) : _name(name) {}
 
-std::string Weapon::getType() {
-    return _type;
+std::string Weapon::getName() const {
+    return _name;
 }
 
-void Weapon::setType(std::string type) {
-    _type = type;
+Transformer::Transformer() : _level(1), _strength(10), _range(5), _weapon(nullptr) {}
+
+Transformer::~Transformer() {
+    delete _weapon; // Destroying the weapon
 }
 
-Transformer::Transformer() : _level(1), _strength(100), _fuel(100), _ammo(10), _weapon("Laser") {}
-
-Transformer::~Transformer() {}
-
-bool Transformer::move() {
-    return true;
-}
-
-bool Transformer::turn(int dir) {
-    return true;
-}
-
-bool Transformer::jump() {
-    return true;
-}
-
-bool Transformer::fire() {
-    _ammo--;
-    return true;
-}
-
-uint Transformer::getLevel() {
+uint Transformer::getLevel() const {
     return _level;
 }
 
@@ -40,10 +21,22 @@ void Transformer::setLevel(uint level) {
     _level = level;
 }
 
-uint Transformer::getStrength() {
+uint Transformer::getStrength() const {
     return _strength;
 }
 
 void Transformer::setStrength(uint strength) {
     _strength = strength;
+}
+
+uint Transformer::getRange() const {
+    return _range;
+}
+
+void Transformer::setRange(uint range) {
+    _range = range;
+}
+
+bool Transformer::fire() {
+    return true; // Simple method
 }

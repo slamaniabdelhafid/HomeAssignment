@@ -1,38 +1,33 @@
 # Compiler
 CXX = g++
 
-# Compiler flags
-CXXFLAGS = -std=c++11 -Wall -g
-
-# Google Test flags
-GTEST_LIBS = -lgtest -lpthread
+# Compilation flags
+CXXFLAGS = -Werror -Wpedantic -Wall -I/usr/include/gtest
 
 # Source files
-SRCS = Transformer.cpp Autobot.cpp Decepticon.cpp test_transformers.cpp
+SOURCES = Transformer.cpp Autobot.cpp Decepticon.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
 
-# Object files
-OBJS = $(SRCS:.cpp=.o)
+# Test files
+TEST_SOURCES = test_transformers.cpp
+TEST_OBJECTS = $(TEST_SOURCES:.cpp=.o)
 
-# Executable name
-TARGET = transformers
+# Executable files
+TEST_TARGET = test_transformers
 
 # Default rule
-all: $(TARGET)
+all: $(TEST_TARGET)
 
-# Linking the object files to create the executable
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(GTEST_LIBS)
+# Rule to build the test executable
+$(TEST_TARGET): $(TEST_OBJECTS) $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ -lgtest -lpthread
 
-# Compiling source files to object files
+# Rule to compile .cpp files into .o
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $<
 
-# Clean up
+# Rule to clean compiled files
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJECTS) $(TEST_TARGET)
 
-# Run tests
-run: $(TARGET)
-	./$(TARGET)
-
-.PHONY: all clean run
+.PHONY: all clean

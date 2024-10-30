@@ -6,12 +6,11 @@
 
 class Weapon {
 public:
-    Weapon(std::string type);
-    std::string getType();
-    void setType(std::string type);
+    Weapon(const std::string &name);
+    std::string getName() const;
 
 private:
-    std::string _type;
+    std::string _name;
 };
 
 class Transformer {
@@ -19,24 +18,22 @@ public:
     Transformer();
     virtual ~Transformer();
 
-    bool move();
-    bool turn(int dir);
-    bool jump();
-    bool fire();
-	virtual bool transform() = 0;
-
-    // Getters and Setters
-    uint getLevel();
+    uint getLevel() const;
     void setLevel(uint level);
-    uint getStrength();
+
+    uint getStrength() const;
     void setStrength(uint strength);
+
+    uint getRange() const;
+    void setRange(uint range);
+
+    bool fire();
 
 protected:
     uint _level;
     uint _strength;
-    uint _fuel;
-    uint _ammo;
-    Weapon _weapon; // Composition
+    uint _range;
+    Weapon *_weapon; // Association
 };
 
 #endif // TRANSFORMER_H

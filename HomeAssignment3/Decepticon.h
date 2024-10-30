@@ -7,7 +7,7 @@
 class Decepticon : public Transformer {
 public:
     Decepticon();
-    bool transform() override;
+    bool transform();
 };
 
 #endif // DECEPTICON_H
