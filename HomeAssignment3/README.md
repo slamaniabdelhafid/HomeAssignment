@@ -8,4 +8,4 @@ Home assingment 3 - classes init and test
 ## Build
 make
 ## Run 
-main
+transformers

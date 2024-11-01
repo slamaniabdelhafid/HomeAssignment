@@ -2,38 +2,27 @@
 #ifndef TRANSFORMER_H
 #define TRANSFORMER_H
 
-#include <string>
+#include <string> // Include the string header
 
 class Weapon {
 public:
-    Weapon(const std::string &name);
-    std::string getName() const;
+    Weapon();
+    void setType(const std::string& type);
+    std::string getType() const;
 
 private:
-    std::string _name;
+    std::string type;
 };
 
 class Transformer {
 public:
     Transformer();
-    virtual ~Transformer();
-
-    uint getLevel() const;
-    void setLevel(uint level);
-
-    uint getStrength() const;
-    void setStrength(uint strength);
-
-    uint getRange() const;
-    void setRange(uint range);
-
-    bool fire();
+    virtual void transform() = 0; // Pure virtual function
+    void setLevel(int level);
+    int getLevel() const;
 
 protected:
-    uint _level;
-    uint _strength;
-    uint _range;
-    Weapon *_weapon; // Association
+    int level;
 };
 
 #endif // TRANSFORMER_H

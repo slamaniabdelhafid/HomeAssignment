@@ -1,10 +1,11 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 #include "Decepticon.h"
+#include <iostream>
 
 Decepticon::Decepticon() {
-    // Constructor
+    // Constructor implementation (if needed)
 }
 
-bool Decepticon::transform() {
-    return true; // Simple method
+void Decepticon::transform() {
+    std::cout << "Decepticon is transforming!" << std::endl;
 }

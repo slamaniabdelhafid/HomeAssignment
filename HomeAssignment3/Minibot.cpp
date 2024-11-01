@@ -1,11 +1,11 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
-#include "Autobot.h"
+#include "Minibot.h"
 #include <iostream>
 
-Autobot::Autobot() {
+Minibot::Minibot() {
     // Constructor implementation (if needed)
 }
 
-void Autobot::transform() {
-    std::cout << "Autobot is transforming!" << std::endl;
+void Minibot::transform() {
+    std::cout << "Minibot is transforming!" << std::endl;
 }
