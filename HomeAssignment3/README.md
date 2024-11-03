@@ -6,6 +6,6 @@ st130302@student.spbu.ru
 ## Description
 Home assingment 3 - classes init and test 
 ## Build
-make
+Use make to compile and link your program
 ## Run 
-transformers
+Execute the generated binary

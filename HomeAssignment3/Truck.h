@@ -1,3 +1,4 @@
+/*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 #ifndef TRUCK_H
 #define TRUCK_H
 
