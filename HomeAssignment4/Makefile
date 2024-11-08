@@ -1,23 +1,37 @@
-IDIR=.
-CXX=g++
-CXXFLAGS=-I$(IDIR) -std=c++11 -Werror -Wpedantic
-LDFLAGS=-lgtest -lgtest_main -lpthread
-OBJECT_FILES=Vehicle.o Car.o Truck.o Engine.o main.o test.o
-PROJECT=main test
-DEPS=Vehicle.h Car.h Truck.h Engine.h
+# Compiler
+CXX = g++
 
-default: all
+# Compiler flags
+CXXFLAGS = -std=c++17 -Wall -Wextra -Werror -Wpedantic
 
-all: $(PROJECT)
+# Directories
+SRCDIR = .
+OBJDIR = .
 
-%.o: %.cpp $(DEPS)
-	$(CXX) -c -o $@ $< $(CXXFLAGS)
+# Source files
+SRCS = main.cpp transformer.cpp autobot.cpp decepticon.cpp \
+       minicon.cpp instrument.cpp blade.cpp blaster.cpp test.cpp
 
-main: $(OBJECT_FILES)
-	$(CXX) -o $@ $(filter-out test.o, $^) $(LDFLAGS)
+# Object files
+OBJS = $(SRCS:.cpp=.o)
 
-test: $(OBJECT_FILES)
-	$(CXX) -o $ @ $(filter-out main.o, $^) $(LDFLAGS)
+# Executable name
+TARGET = transformers_program
 
+# Default target
+all: $(TARGET)
+
+# Linking the program
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+# Compiling source files to object files
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Clean up
 clean:
-	rm -f $(PROJECT) *.o
+	rm -f $(OBJS) $(TARGET)
+
+# Phony targets
+.PHONY: all clean
