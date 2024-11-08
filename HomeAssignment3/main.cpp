@@ -1,35 +1,41 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
-#include <iostream>
-#include "Car.h"
-#include "Truck.h"
-#include "Engine.h"
+
+#include "transformer.h"
+#include "autobot.h"
+#include "decepticon.h"
+#include "minicon.h"
+#include "instrument.h"
 
 int main() {
-    Engine engine("V8");
+    // Create a Transformer
+    Transformer baseTransformer("Base Transformer");
+    baseTransformer.setFuel(100);
+    baseTransformer.fire();
 
-    // Initialize CarConfig with all necessary fields
-    CarConfig carConfig = {"Ford Mustang", 2021, 50, 2}; 
-    Car car(carConfig); // Create a Car object using the configuration
-    car.setEngine(&engine); // Set the engine for the car
-    
-    // Initialize TruckConfig with all necessary fields
-    TruckConfig truckConfig = {"Volvo FH", 2022, 80, 1000}; 
-    Truck truck(truckConfig); // Create a Truck object using the configuration
-    truck.setEngine(&engine); // Set the engine for the truck
+    // Create an Autobot
+    Autobot optimusPrime("Optimus Prime");
+    optimusPrime.setPowerOfBlaster(500);
+    optimusPrime.setColor("Red");
+    std::cout << "Autobot " << optimusPrime.getName() 
+              << " Power: " << optimusPrime.getPowerOfBlaster() 
+              << " Color: " << optimusPrime.getColor() << std::endl;
 
-    // Drive the car and the truck
-    car.drive();
-    truck.drive();
+    // Create a Decepticon
+    Decepticon megatron("Megatron");
+    megatron.setSharpnessOfBlade(300);
+    megatron.setLengthOfBlade(50);
+    std::cout << "Decepticon " << megatron.getName() 
+              << " Blade Sharpness: " << megatron.getSharpnessOfBlade() 
+              << " Blade Length: " << megatron.getLengthOfBlade() << std::endl;
 
-    // Output the details of the car
-    std::cout << "Car model: " << car.getModel() 
-              << ", Year: " << car.getYear() 
-              << ", Fuel Level: " << car.getFuelLevel() << "\n";
-    
-    // Output the details of the truck
-    std::cout << "Truck model: " << truck.getModel() 
-              << ", Year: " << truck.getYear() 
-              << ", Payload Capacity: " << truck.getPayloadCapacity() << "\n";
+    // Create an Instrument and Minicon
+    Instrument pickaxe(100, 50);
+    Minicon miniBot("Mini Bot", &pickaxe);
+    miniBot.setEnergy(200);
+    miniBot.setSize(10);
+    std::cout << "Minicon " << miniBot.getName() 
+              << " Energy: " << miniBot.getEnergy() 
+              << " Size: " << miniBot.getSize() << std::endl;
 
-    return 0; // Indicate successful completion of the program
+    return 0;
 }

@@ -1,23 +1,45 @@
-IDIR=.
-CXX=g++
-CXXFLAGS=-I$(IDIR) -std=c++11
-LDFLAGS=-lgtest -lgtest_main -lpthread
-OBJECT_FILES=Vehicle.o Car.o Truck.o Engine.o main.o test.o
-PROJECT=main test
-DEPS=Vehicle.h Car.h Truck.h Engine.h
+# Compiler
+CXX = g++
 
-default: all
+# Compiler flags
+CXXFLAGS = -std=c++17 -Wall -Wextra -I.
 
-all: $(PROJECT)
+# Linker flags
+LDFLAGS =
 
-%.o: %.cpp $(DEPS)
-	$(CXX) -c -o $@ $< $(CXXFLAGS)
+# Project name
+TARGET = transformers
 
-main: $(OBJECT_FILES)
-	$(CXX) -o $@ $(filter-out test.o, $^) $(LDFLAGS)
+# Source files
+SRCS = main.cpp transformer.cpp autobot.cpp decepticon.cpp \
+       minicon.cpp instrument.cpp blaster.cpp blade.cpp
 
-test: $(OBJECT_FILES)
-	$(CXX) -o $@ $(filter-out main.o, $^) $(LDFLAGS)
+# Object files
+OBJS = $(SRCS:.cpp=.o)
 
+# Test source files (if you want to add Google Test later)
+TEST_SRCS = test.cpp
+TEST_OBJS = $(TEST_SRCS:.cpp=.o)
+
+# Default target
+all: $(TARGET)
+
+# Linking the main executable
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+
+# Compiling source files to object files
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Test target (placeholder - modify if using Google Test)
+test: $(TARGET)
+	@echo "Running tests..."
+	./$(TARGET)
+
+# Clean up
 clean:
-	rm -f $(PROJECT) *.o
+	rm -f $(OBJS) $(TEST_OBJS) $(TARGET)
+
+# Phony targets
+.PHONY: all clean test

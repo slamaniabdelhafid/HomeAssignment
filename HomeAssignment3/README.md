@@ -8,4 +8,4 @@ Home assingment 3 - classes init and test
 ## Build
 Use make to compile and link your program
 ## Run 
-Execute the generated binary
+make test
