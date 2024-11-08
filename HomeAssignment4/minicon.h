@@ -1,3 +1,4 @@
+/*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 #ifndef MINICON_H
 #define MINICON_H
 

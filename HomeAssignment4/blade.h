@@ -1,3 +1,4 @@
+/*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 #ifndef BLADE_H
 #define BLADE_H
 
