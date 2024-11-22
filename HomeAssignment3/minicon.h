@@ -1,33 +1,27 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#ifndef MINICON_H
-#define MINICON_H
+#ifndef MINICON
+#define MINICON
 
 #include "transformer.h"
 #include "instrument.h"
 
-class Minicon : public Transformer {
+class Minicon: public Transformer {
 private:
-    Instrument* _pickaxe;
-    unsigned int _energy;
-    unsigned int _size;
-
+	Instrument* _pickaxe;
+	uint _energy;
+	uint _size;
 public:
-    // Constructors
-    Minicon(const std::string &name, Instrument* pickaxe, 
-            const unsigned int &energy, const unsigned int &size);
-    Minicon(const std::string &name, Instrument* pickaxe);
+	Minicon(const std::string &name, Instrument* pickaxe, const uint &energy, const uint &size);
+	Minicon(const std::string &name, Instrument* pickaxe);
 
-    // Methods
-    bool work();
+	bool work();
 
-    // Setters
-    void setEnergy(const unsigned int &energy);
-    void setSize(const unsigned int &size);
+	void setEnergy(const uint &energy);
+	void setSize(const uint &size);
 
-    // Getters
-    unsigned int getEnergy();
-    unsigned int getSize();
+	uint getEnergy();
+	uint getSize();
 };
 
-#endif // MINICON_H
+#endif

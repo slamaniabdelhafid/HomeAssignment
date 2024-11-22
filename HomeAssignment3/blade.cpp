@@ -2,16 +2,30 @@
 
 #include "blade.h"
 
-// Constructors
-Blade::Blade(const unsigned int &sharpness, const unsigned int &length) 
-    : _sharpness(sharpness), _length(length) {}
+Blade::Blade(const uint &sharpness, const uint &length) :
+	_sharpness(sharpness),
+	_length(length)
+{}
 
-Blade::Blade() : _sharpness(0), _length(0) {}
+Blade::Blade() :
+	Blade(0, 0)
+{}
 
-// Setters
-void Blade::setSharpness(const unsigned int &sharpness) { _sharpness = sharpness; }
-void Blade::setLength(const unsigned int &length) { _length = length; }
 
-// Getters
-unsigned int Blade::getSharpness() { return _sharpness; }
-unsigned int Blade::getLength() { return _length; }
+
+void Blade::setSharpness(const uint &sharpness) {
+	_sharpness = sharpness;
+}
+
+void Blade::setLength(const uint &length) {
+	_length = length;
+}
+
+
+uint Blade::getSharpness() {
+	return _sharpness;
+}
+
+uint Blade::getLength() {
+	return _length;
+}

@@ -4,38 +4,53 @@
 #include "autobot.h"
 #include "decepticon.h"
 #include "minicon.h"
-#include "instrument.h"
 
 int main() {
-    // Create a Transformer
-    Transformer baseTransformer("Base Transformer");
-    baseTransformer.setFuel(100);
-    baseTransformer.fire();
+	Transformer hero;
+	hero.fire();
+	hero.jump();
+	hero.setFuel(70);	
+	std::cout << hero.getAmmo() << '\n';
+	std::cout << hero.getFuel() << '\n';
+	std::cout << hero.getName() << '\n';
 
-    // Create an Autobot
-    Autobot optimusPrime("Optimus Prime");
-    optimusPrime.setPowerOfBlaster(500);
-    optimusPrime.setColor("Red");
-    std::cout << "Autobot " << optimusPrime.getName() 
-              << " Power: " << optimusPrime.getPowerOfBlaster() 
-              << " Color: " << optimusPrime.getColor() << std::endl;
+	std::cout << '\n';
 
-    // Create a Decepticon
-    Decepticon megatron("Megatron");
-    megatron.setSharpnessOfBlade(300);
-    megatron.setLengthOfBlade(50);
-    std::cout << "Decepticon " << megatron.getName() 
-              << " Blade Sharpness: " << megatron.getSharpnessOfBlade() 
-              << " Blade Length: " << megatron.getLengthOfBlade() << std::endl;
+	Autobot hero2("Optimus");
+	hero2.setPowerOfBlaster(100);
+	hero2.setColor("purple");
+	hero2.fire(); 
+	std::cout << hero2.getPowerOfBlaster() << '\n';
+	std::cout << hero2.getColor() << '\n';
+	std::cout << hero2.getName() << '\n';
+	
 
-    // Create an Instrument and Minicon
-    Instrument pickaxe(100, 50);
-    Minicon miniBot("Mini Bot", &pickaxe);
-    miniBot.setEnergy(200);
-    miniBot.setSize(10);
-    std::cout << "Minicon " << miniBot.getName() 
-              << " Energy: " << miniBot.getEnergy() 
-              << " Size: " << miniBot.getSize() << std::endl;
+	std::cout << '\n';
 
-    return 0;
+	Decepticon enemy;
+	enemy.setName("Enemy");
+	enemy.fire();
+	enemy.jump();
+	enemy.setLengthOfBlade(20);
+	enemy.setSharpnessOfBlade(300);
+	std::cout << enemy.getName() << '\n';
+	std::cout << enemy.getSharpnessOfBlade() << '\n';
+	std::cout << enemy.getLengthOfBlade() << '\n';
+
+	std::cout << '\n';
+
+	Instrument pickaxe(100, 50);
+
+	Minicon builder("Barak", &pickaxe);
+	builder.setSize(100);
+	builder.setEnergy(1000);
+	builder.work();
+	builder.work();
+	std::cout << builder.getName() << '\n';
+	std::cout << builder.getEnergy() << '\n';
+
+
+	std::cout << '\n';
+
+	return 0;
 }

@@ -1,45 +1,52 @@
-# Compiler
+PROJECT = app
+
+LIBPROJECT = $(PROJECT).a
+
+TESTPROJECT = test-$(PROJECT)
+
 CXX = g++
 
-# Compiler flags
-CXXFLAGS = -std=c++17 -Wall -Wextra -I.
+A = ar
 
-# Linker flags
-LDFLAGS =
+AFLAGS = rsv
 
-# Project name
-TARGET = transformers
+CXXFLAGS = -I. -std=c++17 -Wall -g -fPIC
 
-# Source files
-SRCS = main.cpp transformer.cpp autobot.cpp decepticon.cpp \
-       minicon.cpp instrument.cpp blaster.cpp blade.cpp
+LDXXFLAGS = $(CXXFLAGS) -L. -l:$(LIBPROJECT)
 
-# Object files
-OBJS = $(SRCS:.cpp=.o)
+LDGTESTFLAGS = $(LDXXFLAGS) -lgtest -lgtest_main -lpthread
 
-# Test source files (if you want to add Google Test later)
-TEST_SRCS = test.cpp
-TEST_OBJS = $(TEST_SRCS:.cpp=.o)
+DEPS = $(wildcard *.hpp)
+SRC = $(filter-out main.cpp, $(wildcard *.cpp))
+OBJ = $(patsubst %.cpp, %.o, $(SRC))
 
-# Default target
-all: $(TARGET)
+TEST-OBJ = test.o
 
-# Linking the main executable
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+.PHONY: default
 
-# Compiling source files to object files
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+default: all;
 
-# Test target (placeholder - modify if using Google Test)
-test: $(TARGET)
-	@echo "Running tests..."
-	./$(TARGET)
+%.o: %.cpp $(DEPS)
+	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
-# Clean up
+$(LIBPROJECT) : $(OBJ)
+	$(A) $(AFLAGS) $@ $^
+
+$(PROJECT) : main.o $(LIBPROJECT)
+	$(CXX) -o $@ main.o $(LDXXFLAGS)
+
+$(TESTPROJECT) : $(LIBPROJECT) $(TESTOBJ)
+	$(CXX) $(TEST-OBJ) -o $@ $(LDGTESTFLAGS)
+
+test: $(TESTPROJECT)
+
+app: $(PROJECT)
+
+all:
+	make app
+	make test
+
+.PHONY: clean
+
 clean:
-	rm -f $(OBJS) $(TEST_OBJS) $(TARGET)
-
-# Phony targets
-.PHONY: all clean test
+	rm $(PROJECT) $(TESTPROJECT) $(LIBPROJECT) *.o 

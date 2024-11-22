@@ -1,27 +1,24 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#ifndef BLADE_H
-#define BLADE_H
+#ifndef BLADE
+#define BLADE
 
 #include <iostream>
 
 class Blade {
 private:
-    unsigned int _sharpness;
-    unsigned int _length;
-
+	uint _sharpness;
+	uint _length;
 public:
-    // Constructors
-    Blade(const unsigned int &sharpness, const unsigned int &length);
-    Blade();
+	Blade(const uint &sharpness, const uint &length);
+	Blade();
 
-    // Setters
-    void setSharpness(const unsigned int &sharpness);
-    void setLength(const unsigned int &length);
+	void setSharpness(const uint &sharpness);
+	void setLength(const uint &length);
 
-    // Getters
-    unsigned int getSharpness();
-    unsigned int getLength();
+	uint getSharpness();
+	uint getLength();
 };
 
-#endif // BLADE_H
+
+#endif

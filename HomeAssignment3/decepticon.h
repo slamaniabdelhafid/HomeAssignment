@@ -1,29 +1,24 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#ifndef DECEPTICON_H
-#define DECEPTICON_H
+#ifndef DECEPTICON
+#define DECEPTICON
 
 #include "transformer.h"
 #include "blade.h"
 
-class Decepticon : public Transformer {
+class Decepticon: public Transformer {
 private:
-    Blade _sword;
-
+	Blade _sword;
 public:
-    // Constructors
-    Decepticon(const std::string &name, const unsigned int &sharpnessOfBlade, 
-               const unsigned int &lengthOfBlade);
-    Decepticon(const std::string &name);
-    Decepticon();
+	Decepticon(const std::string &name, const uint &sharpnessOfBlade, const uint &lengthOfBlade);
+	Decepticon(const std::string &name);
+	Decepticon();
 
-    // Setters
-    void setSharpnessOfBlade(const unsigned int &sharpnessOfBlade);
-    void setLengthOfBlade(const unsigned int &lengthOfBlade);
+	void setSharpnessOfBlade(const uint &sharpnessOfBlade);
+	void setLengthOfBlade(const uint &lengthOfBlade);
 
-    // Getters
-    unsigned int getSharpnessOfBlade();
-    unsigned int getLengthOfBlade();
+	uint getSharpnessOfBlade();
+	uint getLengthOfBlade();
 };
 
-#endif // DECEPTICON_H
+#endif

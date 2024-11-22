@@ -1,27 +1,23 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#ifndef BLASTER_H
-#define BLASTER_H
+#ifndef BLASTER
+#define BLASTER
 
 #include <iostream>
 
 class Blaster {
 private:
-    unsigned int _power;
-    unsigned int _capacity;
-
+	uint _power;
+	uint _capacity;
 public:
-    // Constructors
-    Blaster(const unsigned int &power, const unsigned int &capacity);
-    Blaster();
+	Blaster(const uint &power, const uint &capacity);
+	Blaster();
 
-    // Setters
-    void setPower(const unsigned int &power);
-    void setCapacity(const unsigned int &capacity);
+	void setPower(const uint &power);
+	void setCapacity(const uint &capacity);
 
-    // Getters
-    unsigned int getPower();
-    unsigned int getCapacity();
+	uint getPower();
+	uint getCapacity();
 };
 
-#endif // BLASTER_H
+#endif

@@ -2,19 +2,34 @@
 
 #include "instrument.h"
 
-// Constructors
-Instrument::Instrument(const unsigned int &endurance, const unsigned int &effect) 
-    : _endurance(endurance), _effect(effect) {}
+Instrument::Instrument(const uint &endurance, const uint &effect) :
+	_endurance(endurance),
+	_effect(effect)
+{}
 
-Instrument::Instrument() : _endurance(0), _effect(0) {}
+Instrument::Instrument() :
+	Instrument(0, 0)
+{}
 
-// Methods
-bool Instrument::use() { return true; }
 
-// Setters
-void Instrument::setEndurance(const unsigned int &endurance) { _endurance = endurance; }
-void Instrument::setEffect(const unsigned int &effect) { _effect = effect; }
+bool Instrument::use() {
+	std::cout << "Instrument has been used\n";
+	return true;
+}
 
-// Getters
-unsigned int Instrument::getEndurance() { return _endurance; }
-unsigned int Instrument::getEffect() { return _effect; }
+
+void Instrument::setEndurance(const uint &endurance) {
+	_endurance = endurance;
+}
+
+void Instrument::setEffect(const uint &effect) {
+	_effect = effect;
+}
+
+uint Instrument::getEndurance() {
+	return _endurance;
+}
+
+uint Instrument::getEffect() {
+	return _effect;
+}

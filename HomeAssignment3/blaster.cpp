@@ -2,16 +2,30 @@
 
 #include "blaster.h"
 
-// Constructors
-Blaster::Blaster(const unsigned int &power, const unsigned int &capacity) 
-    : _power(power), _capacity(capacity) {}
+Blaster::Blaster(const uint &power, const uint &capacity) :
+	_power(power),
+	_capacity(capacity)
+{}
 
-Blaster::Blaster() : _power(0), _capacity(0) {}
+Blaster::Blaster() :
+	Blaster(0, 0)
+{}
 
-// Setters
-void Blaster::setPower(const unsigned int &power) { _power = power; }
-void Blaster::setCapacity(const unsigned int &capacity) { _capacity = capacity; }
 
-// Getters
-unsigned int Blaster::getPower() { return _power; }
-unsigned int Blaster::getCapacity() { return _capacity; }
+
+void Blaster::setPower(const uint &power) {
+	_power = power;
+}
+
+void Blaster::setCapacity(const uint &capacity) {
+	_capacity = capacity;
+}
+
+
+uint Blaster::getPower() {
+	return _power;
+}
+
+uint Blaster::getCapacity() {
+	return _capacity;
+}

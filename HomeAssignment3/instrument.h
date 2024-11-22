@@ -1,30 +1,26 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#ifndef INSTRUMENT_H
-#define INSTRUMENT_H
+#ifndef INSTR
+#define INSTR
 
 #include <iostream>
 
 class Instrument {
 private:
-    unsigned int _endurance;
-    unsigned int _effect;
-
+	uint _endurance;
+	uint _effect;
 public:
-    // Constructors
-    Instrument(const unsigned int &endurance, const unsigned int &effect);
-    Instrument();
+	Instrument(const uint &endurance, const uint &effect);
+	Instrument();
 
-    // Methods
-    bool use();
+	bool use();
 
-    // Setters
-    void setEndurance(const unsigned int &endurance);
-    void setEffect(const unsigned int &effect);
+	void setEndurance(const uint &setEndurance);
+	void setEffect(const uint &effect);
 
-    // Getters
-    unsigned int getEndurance();
-    unsigned int getEffect();
+	uint getEndurance();
+	uint getEffect();
 };
 
-#endif // INSTRUMENT_H
+
+#endif
