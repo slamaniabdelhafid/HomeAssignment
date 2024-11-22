@@ -16,7 +16,7 @@ LDXXFLAGS = $(CXXFLAGS) -L. -l:$(LIBPROJECT)
 
 LDGTESTFLAGS = $(LDXXFLAGS) -lgtest -lgtest_main -lpthread
 
-DEPS = $(wildcard *.hpp)
+DEPS = $(wildcard *.h)
 SRC = $(filter-out main.cpp, $(wildcard *.cpp))
 OBJ = $(patsubst %.cpp, %.o, $(SRC))
 
