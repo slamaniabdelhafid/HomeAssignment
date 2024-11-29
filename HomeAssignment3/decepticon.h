@@ -1,24 +1,26 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#ifndef DECEPTICON
-#define DECEPTICON
+#include "Transformers.h"
+#ifndef DECEPTICON_H
+#define DECEPTICON_H
+#include <iostream>
+#include <string>
 
-#include "transformer.h"
-#include "blade.h"
-
-class Decepticon: public Transformer {
+class decepticon : public BaseTransformer {
 private:
-	Blade _sword;
+    std::string _beastForm;
+    std::string _peaceful;
+
 public:
-	Decepticon(const std::string &name, const uint &sharpnessOfBlade, const uint &lengthOfBlade);
-	Decepticon(const std::string &name);
-	Decepticon();
+    // constructors
+    decepticon();
+    decepticon(std::string beast, std::string peace);
+    std::string getBeastForm() const;
+    void setBeastForm(std::string newBeastForm);
 
-	void setSharpnessOfBlade(const uint &sharpnessOfBlade);
-	void setLengthOfBlade(const uint &lengthOfBlade);
-
-	uint getSharpnessOfBlade();
-	uint getLengthOfBlade();
+    std::string getPeaceful() const;
+    void setPeaceful(std::string newPeaceful);
+    void aboutRobot() override;
 };
 
 #endif

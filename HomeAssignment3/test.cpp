@@ -1,81 +1,34 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#include <gtest/gtest.h>
-
-#include "transformer.h"
-#include "autobot.h"
+#include "blaster.h"
 #include "decepticon.h"
+#include "instrument.h"
 #include "minicon.h"
 
-TEST(Transformer, CheckFireJump) {
-    Transformer hero;
-    ASSERT_TRUE(hero.fire());
-    ASSERT_TRUE(hero.jump());
-}
+int main() {
+    blaster blaster;
+    blaster.setCapacity(100.0);
+    blaster.setSpeed("Fast");
 
-TEST(Transformer, CheckAmmoFuelName) {
-    Transformer hero;
-    hero.setFuel(70);
-    EXPECT_EQ(hero.getAmmo(), 0);
-    EXPECT_EQ(hero.getFuel(), 70);
-    EXPECT_EQ("Untitled", hero.getName());
-}
+    decepticon decepticon("Dragon", "Peaceful");
+    decepticon.setBeastForm("Dragon");
+    decepticon.setPeaceful("Not Dangerous");
 
-TEST(Autobot, CheckFire) {
-    Autobot hero2("Optimus");
-    ASSERT_TRUE(hero2.fire());
-}
+    instrument instrument;
+    instrument.setName("Laser");
+    instrument.setSize(5);
 
-TEST(Autobot, CheckPowerColorName) {
-    Autobot hero2("Optimus");
-    hero2.setPowerOfBlaster(100);
-    hero2.setColor("purple");
-    EXPECT_EQ(hero2.getPowerOfBlaster(), 100);
-    EXPECT_EQ(hero2.getColor(), "purple");
-    EXPECT_EQ(hero2.getName(), "Optimus");
-}
+    minicon minicon("T-Rex", "Very Dangerous");
+    minicon.setDinosaurForm("T-Rex");
+    minicon.setDangerous("Extremely Dangerous");
 
-TEST(Decepticon, DecCheckFireJump) {
-    Decepticon enemy;
-    enemy.setName("Enemy");
-    ASSERT_TRUE(enemy.fire());
-    ASSERT_TRUE(enemy.jump());
-}
+    // Display information
+    std::cout << "blaster Capacity: " << blaster.getCapacity() << "\n";
+    std::cout << "blaster Speed: " << blaster.getSpeed() << "\n";
+    decepticon.aboutRobot();
+    std::cout << "instrument Name: " << instrument.getName() << "\n";
+    std::cout << "instrument Size: " << instrument.getSize() << "\n";
+    minicon.aboutRobot();
 
-TEST(Decepticon, CheckNameSharpLen) {
-    Decepticon enemy;
-    enemy.setName("Enemy");
-    enemy.setLengthOfBlade(20);
-    enemy.setSharpnessOfBlade(300);
-    EXPECT_EQ(enemy.getName(), "Enemy");
-    EXPECT_EQ(enemy.getSharpnessOfBlade(), 300);
-    EXPECT_EQ(enemy.getLengthOfBlade(), 20);
-}
-
-TEST(Minicon, CheckWork) {
-    Instrument pickaxe(100, 50);
-    Minicon builder("Barak", &pickaxe);
-    builder.setSize(100);
-    builder.setEnergy(1000);
-    ASSERT_TRUE(builder.work());
-}
-
-TEST(Minicon, CheckNameEnergy) {
-    Instrument pickaxe(100, 50);
-    Minicon builder("Barak", &pickaxe);
-    builder.setSize(100);
-    builder.setEnergy(1000);
-    EXPECT_EQ(builder.getName(), "Barak");
-    EXPECT_EQ(builder.getEnergy(), 1000);
-}
-
-TEST(Instrument, CheckUse) {
-    Instrument axe(200, 20);
-    ASSERT_TRUE(axe.use());
-}
-
-// Main function to run all tests
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    return 0;
 }

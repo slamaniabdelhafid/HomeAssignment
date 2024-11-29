@@ -1,26 +1,22 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#ifndef INSTR
-#define INSTR
-
+#ifndef INSTRUMENT_H
+#define INSTRUMENT_H
 #include <iostream>
+#include <string>
 
-class Instrument {
+class instrument {
 private:
-	uint _endurance;
-	uint _effect;
+    std::string _name;
+    int _size;
+
 public:
-	Instrument(const uint &endurance, const uint &effect);
-	Instrument();
+    std::string getName() const;
 
-	bool use();
+    void setName(const std::string& newName);
 
-	void setEndurance(const uint &setEndurance);
-	void setEffect(const uint &effect);
+    int getSize() const;
 
-	uint getEndurance();
-	uint getEffect();
+    void setSize(int newSize);
 };
-
-
 #endif

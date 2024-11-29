@@ -1,46 +1,32 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
 #include "autobot.h"
+#include <string>
 
-Autobot::Autobot(const std::string &name, const std::string &color, const uint &powerOfBlaster, const uint &capacityOfBlaster) :
-	Transformer(name),
-	_color(color),
-	_weapon(powerOfBlaster, capacityOfBlaster)
-{
-	std::cout << "Autobot " << name << " has been created!\n";
+    
+//constructor
+
+autobot::autobot(std::string moral, std::string vehicle){
+    _moralAlignment = moral;
+    _groundVehicle= vehicle;
 }
 
-Autobot::Autobot(const std::string &name) :
-	Autobot(name, "Unknown", 0, 0)
-{}
+autobot::autobot(){
+        autobotCounter++;
+    }
 
-Autobot::Autobot() :
-	Autobot("Untitled", "Unknown", 0, 0)
-{}
+std::string autobot :: getMoralAlignemt() const{
+        return _moralAlignment;
+    }
+    void setMoralAlignmet(std::string newMoralAlignment);
 
+    std::string autobot :: getGroundVehicle() const{
+        return _groundVehicle;
+    }
+    void setGroundVehicle(std::string newGroundVehicle);
 
-
-void Autobot::setPowerOfBlaster(const uint &powerOfBlaster) {
-	_weapon.setPower(powerOfBlaster);
-}
-
-void Autobot::setCapacityOfBlaster(const uint &capacityOfBlaster) {
-	_weapon.setCapacity(capacityOfBlaster);
-}
-
-void Autobot::setColor(const std::string &color) {
-	_color = color;
-}
-
-
-uint Autobot::getPowerOfBlaster() {
-	return _weapon.getPower();
-}
-
-uint Autobot::getCapacityOfBlaster() {
-	return _weapon.getCapacity();
-}
-
-std::string Autobot::getColor() {
-	return _color;
+//information about the transformer
+void autobot :: aboutRobot() {
+    std::cout<<"MoralAlignement : "<<_moralAlignment<<"\n";
+    std::cout<<"groundVehicle : "<<_groundVehicle<<"\n";
 }

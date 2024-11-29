@@ -2,30 +2,18 @@
 
 #include "blaster.h"
 
-Blaster::Blaster(const uint &power, const uint &capacity) :
-	_power(power),
-	_capacity(capacity)
-{}
-
-Blaster::Blaster() :
-	Blaster(0, 0)
-{}
-
-
-
-void Blaster::setPower(const uint &power) {
-	_power = power;
+double blaster::getCapacity() {
+    return _capacity;
 }
 
-void Blaster::setCapacity(const uint &capacity) {
-	_capacity = capacity;
+void blaster::setCapacity(double newCapacity) {
+    _capacity = newCapacity;
 }
 
-
-uint Blaster::getPower() {
-	return _power;
+std::string blaster::getSpeed() {
+    return _speed;
 }
 
-uint Blaster::getCapacity() {
-	return _capacity;
+void blaster::setSpeed(std::string& newSpeed) {
+    _speed = newSpeed;
 }

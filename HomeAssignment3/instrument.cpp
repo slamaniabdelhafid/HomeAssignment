@@ -2,34 +2,18 @@
 
 #include "instrument.h"
 
-Instrument::Instrument(const uint &endurance, const uint &effect) :
-	_endurance(endurance),
-	_effect(effect)
-{}
-
-Instrument::Instrument() :
-	Instrument(0, 0)
-{}
-
-
-bool Instrument::use() {
-	std::cout << "Instrument has been used\n";
-	return true;
+std::string instrument::getName() const {
+    return _name;
 }
 
-
-void Instrument::setEndurance(const uint &endurance) {
-	_endurance = endurance;
+void instrument::setName(const std::string& newName) {
+    _name = newName;
 }
 
-void Instrument::setEffect(const uint &effect) {
-	_effect = effect;
+int instrument::getSize() const {
+    return _size;
 }
 
-uint Instrument::getEndurance() {
-	return _endurance;
-}
-
-uint Instrument::getEffect() {
-	return _effect;
+void instrument::setSize(int newSize) {
+    _size = newSize;
 }

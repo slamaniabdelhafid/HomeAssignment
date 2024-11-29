@@ -1,27 +1,30 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#ifndef MINICON
-#define MINICON
+#include "Transformers.h"
+#ifndef MINICON_H
+#define MINICON_H
+#include <iostream>
+#include <string>
 
-#include "transformer.h"
-#include "instrument.h"
-
-class Minicon: public Transformer {
+class minicon : public BaseTransformer {
 private:
-	Instrument* _pickaxe;
-	uint _energy;
-	uint _size;
+    std::string _dinosaurForm;
+    std::string _dangerous;
+
 public:
-	Minicon(const std::string &name, Instrument* pickaxe, const uint &energy, const uint &size);
-	Minicon(const std::string &name, Instrument* pickaxe);
+    // +1 when an object is created
+    static int dinobotCounter;
+    // constructor
+    minicon();
+    // constructor with parameter
+    minicon(std::string dinosaur, std::string dangerous);
 
-	bool work();
+    std::string getDinosaurForm() const;
+    void setDinosaurForm(std::string newDinosaurForm);
 
-	void setEnergy(const uint &energy);
-	void setSize(const uint &size);
-
-	uint getEnergy();
-	uint getSize();
+    std::string getDangerous() const;
+    void setDangerous(std::string newDangerous);
+    void aboutRobot() override;
 };
 
 #endif

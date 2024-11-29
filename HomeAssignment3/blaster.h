@@ -1,23 +1,20 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#ifndef BLASTER
-#define BLASTER
-
+#ifndef BLASTER_H
+#define BLASTER_H
+#include <string>
 #include <iostream>
 
-class Blaster {
-private:
-	uint _power;
-	uint _capacity;
+class blaster {
 public:
-	Blaster(const uint &power, const uint &capacity);
-	Blaster();
+    double _capacity;
+    std::string _speed;
 
-	void setPower(const uint &power);
-	void setCapacity(const uint &capacity);
+    void setCapacity(double newCapacity);
+    double getCapacity();
 
-	uint getPower();
-	uint getCapacity();
+    void setSpeed(std::string& newSpeed);
+    std::string getSpeed();
 };
 
 #endif

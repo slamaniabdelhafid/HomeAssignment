@@ -1,4 +1,4 @@
-PROJECT = app
+PROJECT = transformers
 
 LIBPROJECT = $(PROJECT).a
 
@@ -10,17 +10,18 @@ A = ar
 
 AFLAGS = rsv
 
-CXXFLAGS = -I. -std=c++17 -Wall -g -fPIC
+CCXFLAGS = -I. -std=c++17 -Wall -g -fPIC
 
-LDXXFLAGS = $(CXXFLAGS) -L. -l:$(LIBPROJECT)
+LDXXFLAGS = $(CCXFLAGS) -L. -l:$(LIBPROJECT)
 
 LDGTESTFLAGS = $(LDXXFLAGS) -lgtest -lgtest_main -lpthread
 
-DEPS = $(wildcard *.h)
-SRC = $(filter-out main.cpp, $(wildcard *.cpp))
-OBJ = $(patsubst %.cpp, %.o, $(SRC))
+DEPS=$(wildcard *.h)
 
-TEST-OBJ = test.o
+OBJ=Transformers.o autobot.o dinobot.o predacon.o weapon.o memory.o 
+
+TEST-OBJ=test_transformers.o 
+
 
 .PHONY: default
 
@@ -29,24 +30,26 @@ default: all;
 %.o: %.cpp $(DEPS)
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
-$(LIBPROJECT) : $(OBJ)
+$(LIBPROJECT): $(OBJ)
 	$(A) $(AFLAGS) $@ $^
 
-$(PROJECT) : main.o $(LIBPROJECT)
+$(PROJECT): main.o $(LIBPROJECT)
 	$(CXX) -o $@ main.o $(LDXXFLAGS)
 
-$(TESTPROJECT) : $(LIBPROJECT) $(TESTOBJ)
-	$(CXX) $(TEST-OBJ) -o $@ $(LDGTESTFLAGS)
+
+$(TESTPROJECT): $(LIBPROJECT) $(TEST-OBJ)
+	$(CXX) -o $@ $(TEST-OBJ) $(LDGTESTFLAGS)
 
 test: $(TESTPROJECT)
 
-app: $(PROJECT)
-
-all:
-	make app
-	make test
+all: $(PROJECT)
 
 .PHONY: clean
 
 clean:
-	rm $(PROJECT) $(TESTPROJECT) $(LIBPROJECT) *.o 
+	rm -f *.o
+
+cleanall: clean
+	rm -f $(PROJECT)
+	rm -f $(LIBPROJECT)
+	rm -f $(TESTPROJECT)

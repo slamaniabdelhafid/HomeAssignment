@@ -2,35 +2,29 @@
 
 #include "decepticon.h"
 
-Decepticon::Decepticon(const std::string &name, const uint &sharpnessOfBlade, const uint &lengthOfBlade) :
-	Transformer(name),	
-	_sword(sharpnessOfBlade, lengthOfBlade)
-{
-	std::cout << "Decepticon " << name << " has been created!\n";
+decepticon::decepticon() {}
+decepticon::decepticon(std::string beast, std::string peace) {
+    _beastForm = beast;
+    _peaceful = peace;
 }
 
-Decepticon::Decepticon(const std::string &name) :
-	Decepticon(name, 0, 0)
-{}
-
-Decepticon::Decepticon() :
-	Decepticon("Untitled", 0, 0)
-{}
-
-
-void Decepticon::setSharpnessOfBlade(const uint &sharpnessOfBlade) {
-	_sword.setSharpness(sharpnessOfBlade);
+std::string decepticon::getBeastForm() const {
+    return _beastForm;
 }
 
-void Decepticon::setLengthOfBlade(const uint &lengthOfBlade) {
-	_sword.setLength(lengthOfBlade);
+void decepticon::setBeastForm(std::string newBeastForm) {
+    _beastForm = newBeastForm;
 }
 
-
-uint Decepticon::getSharpnessOfBlade() {
-	return _sword.getSharpness();
+std::string decepticon::getPeaceful() const {
+    return _peaceful;
 }
 
-uint Decepticon::getLengthOfBlade() {
-	return _sword.getLength();
+void decepticon::setPeaceful(std::string newPeaceful) {
+    _peaceful = newPeaceful;
+}
+
+void decepticon::aboutRobot() {
+    std::cout << "BeastForm : " << _beastForm << "\n";
+    std::cout << "Peace : " << _peaceful << "\n";
 }
