@@ -4,3 +4,8 @@ output.bin
 *.o
 main
 *.codelite
+*.a
+jtransformers
+jtransformers.a
+test-transformers
+transformers.a
