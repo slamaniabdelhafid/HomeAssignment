@@ -18,7 +18,7 @@ LDGTESTFLAGS = $(LDXXFLAGS) -lgtest -lgtest_main -lpthread
 
 DEPS = $(wildcard *.h)
 
-OBJ = Transformers.o decepticon.o minicon.o decepticon.o instrument.o blaster.o 
+OBJ = Transformers.o decepticon.o minicon.o decepticon.o instrument.o blaster.o autobot.o
 
 TEST_OBJ = test_transformers.o 
 
