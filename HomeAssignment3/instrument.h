@@ -5,18 +5,19 @@
 #include <iostream>
 #include <string>
 
-class instrument {
-private:
-    std::string _name;
-    int _size;
+class Instrument {
+    private:
+        std::string _name;
+        int _size;
 
-public:
-    std::string getName() const;
+    public:
+        std::string getName() const;
 
-    void setName(const std::string& newName);
+        void setName(const std::string& newName);
 
-    int getSize() const;
+        int getSize() const;
 
-    void setSize(int newSize);
+        void setSize(int newSize);
 };
+
 #endif

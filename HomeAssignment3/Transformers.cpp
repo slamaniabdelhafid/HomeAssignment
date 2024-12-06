@@ -1,29 +1,27 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
 #include "Transformers.h"
-#include "instrument.h"
+#include "instrument.h" 
 #include <string>
-#include <iostream>
-
-// Default constructor
-BaseTransformer::BaseTransformer() {}
+#include <iostream> 
 
 // Constructor
+BaseTransformer::BaseTransformer() {}
+
 BaseTransformer::BaseTransformer(std::string name, std::string brand, std::string colour,
-                                 std::string shape, int height, blaster blaster) { // Updated type to Blaster
+                                  std::string shape, int height, Blaster blaster) { 
     _name = name;
     _brand = brand;
     _colour = colour;
     _shape = shape;
     _height = height;
-    _instrument = instrument(); // Updated to use Instrument
-    *_blaster = blaster; // Allocate memory for Blaster
+    _instrument = Instrument(); 
+    *_blaster = blaster; 
 }
 
 // Destructor
 BaseTransformer::~BaseTransformer() {
     std::cout << "Destructor clears " << std::endl;
-    delete _blaster; // Free allocated memory
 }
 
 // Information about the transformer
@@ -35,7 +33,7 @@ void BaseTransformer::aboutRobot() {
     std::cout << "Height :" << _height << "\n";
 }
 
-// Get method set method and validation
+// Get method, set method, and validation
 std::string BaseTransformer::getName() const {
     return _name;
 }
@@ -80,7 +78,7 @@ std::string BaseTransformer::getShape() {
 }
 
 void BaseTransformer::setShape(std::string newShape) {
-    _shape = newShape;
+    _shape = newShape; // Added implementation for setShape
 }
 
 bool BaseTransformer::isValidShape() const {
@@ -97,5 +95,5 @@ void BaseTransformer::setHeight(int newHeight) {
 }
 
 bool BaseTransformer::isValidHeight() const {
-    return _height > 0; // Corrected validation logic
+    return _height > 0; // Fixed the validation logic
 }

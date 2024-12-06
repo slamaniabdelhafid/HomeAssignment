@@ -1,11 +1,11 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#ifndef BLASTER_H
+#ifndef BLASTER_H  
 #define BLASTER_H
 #include <string>
 #include <iostream>
 
-class blaster {
+class Blaster { 
 public:
     double _capacity;
     std::string _speed;

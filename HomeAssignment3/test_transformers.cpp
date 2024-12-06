@@ -1,34 +1,47 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#include "blaster.h"
-#include "decepticon.h"
-#include "instrument.h"
-#include "minicon.h"
+#include <gtest/gtest.h>
+#include "Transformers.h"
+#include "autobot.h"
+#include "minicon.h"   
+#include "decepticon.h"  
+#include <iostream>
 
-int main() {
-    blaster blaster;
-    blaster.setCapacity(100.0);
-    blaster.setSpeed("Fast");
+// Base class test
+TEST(TransformerTest, transformers) {
+    BaseTransformer myRobo2;
+    myRobo2.setName("Titanus");
+    myRobo2.setHeight(150);
+    EXPECT_EQ(myRobo2.getHeight(), 150);
+    EXPECT_EQ(myRobo2.getName(), "Titanus");
+}
 
-    decepticon decepticon("Dragon", "Peaceful");
-    decepticon.setBeastForm("Dragon");
-    decepticon.setPeaceful("Not Dangerous");
+// Autobots
+// We initialized the value of the autobots counter 
+int Autobot::autobotCounter = 0;
+TEST(AutobotTest, autobotsCount) {
+    Autobot autobot;
+    Autobot autobot1;
+    Autobot autobotQ;
+    EXPECT_EQ(Autobot::autobotCounter, 3);
+}
 
-    instrument instrument;
-    instrument.setName("Laser");
-    instrument.setSize(5);
+// Minicons
+// We initialized the value of the counter 
+int Minicon::miniconCounter = 0; 
+TEST(MiniconTest, miniconsCount) {
+    Minicon minicon; 
+    EXPECT_EQ(Minicon::miniconCounter, 1); 
+}
 
-    minicon minicon("T-Rex", "Very Dangerous");
-    minicon.setDinosaurForm("T-Rex");
-    minicon.setDangerous("Extremely Dangerous");
+// Decepticons
+TEST(DecepticonTest, decepticonGetName) { 
+    Decepticon decepticon; 
+    decepticon.setName("Chidima");
+    EXPECT_EQ(decepticon.getName(), "Chidima");
+}
 
-    // Display information
-    std::cout << "blaster Capacity: " << blaster.getCapacity() << "\n";
-    std::cout << "blaster Speed: " << blaster.getSpeed() << "\n";
-    decepticon.aboutRobot();
-    std::cout << "instrument Name: " << instrument.getName() << "\n";
-    std::cout << "instrument Size: " << instrument.getSize() << "\n";
-    minicon.aboutRobot();
-
-    return 0;
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

@@ -1,16 +1,12 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-
 #include "Transformers.h"
 #ifndef AUTOBOT_H
 #define AUTOBOT_H
 #include <iostream>
 #include <string>
 
-
-
-
-class autobot : public BaseTransformer{
+class Autobot : public BaseTransformer{
     private:
         std::string _moralAlignment;
         std::string _groundVehicle;
@@ -18,9 +14,9 @@ class autobot : public BaseTransformer{
     public:
     static int  autobotCounter;
     //constructor
-    autobot();
+    Autobot();
     //constructor with parameter
-    autobot(std::string moral, std::string vehicle);
+    Autobot(std::string moral, std::string vehicle);
 
 
 

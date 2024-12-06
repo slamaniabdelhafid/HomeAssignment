@@ -1,36 +1,28 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
 #include "minicon.h"
+#include <string>
 
-int minicon::dinobotCounter = 0;
-
-minicon::minicon() {
-    dinobotCounter++;
+Minicon::Minicon() {
+    miniconCounter++;
 }
 
-minicon::minicon(std::string dinosaur, std::string dangerous) {
-    _dinosaurForm = dinosaur;
-    _dangerous = dangerous;
-    dinobotCounter++;
+Minicon::Minicon(std::string blaster, std::string instrument) {
+    _blasterForm = blaster;
+    _instrument = instrument;
 }
 
-std::string minicon::getDinosaurForm() const {
-    return _dinosaurForm;
+std::string Minicon::getBlasterForm() const {
+    return _blasterForm;
 }
 
-void minicon::setDinosaurForm(std::string newDinosaurForm) {
-    _dinosaurForm = newDinosaurForm;
+// void setBlasterForm(std::string newBlasterForm);
+
+std::string Minicon::getInstrument() const {
+    return _instrument;
 }
 
-std::string minicon::getDangerous() const {
-    return _dangerous;
-}
-
-void minicon::setDangerous(std::string newDangerous) {
-    _dangerous = newDangerous;
-}
-
-void minicon::aboutRobot() {
-    std::cout << "DinosaurForm : " << _dinosaurForm << "\n";
-    std::cout << "Dangerous : " << _dangerous << "\n";
+void Minicon::aboutRobot() {
+    std::cout << "blaster " << _blasterForm << "\n";
+    std::cout << "instrument: " << _instrument << "\n";
 }

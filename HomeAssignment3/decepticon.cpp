@@ -1,30 +1,30 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#include "decepticon.h"
+#include "decepticon.h"  
 
-decepticon::decepticon() {}
-decepticon::decepticon(std::string beast, std::string peace) {
+Decepticon::Decepticon() {}  
+Decepticon::Decepticon(std::string beast, std::string peace) {
     _beastForm = beast;
     _peaceful = peace;
 }
 
-std::string decepticon::getBeastForm() const {
+std::string Decepticon::getBeastForm() const {
     return _beastForm;
 }
 
-void decepticon::setBeastForm(std::string newBeastForm) {
-    _beastForm = newBeastForm;
+void Decepticon::setDinosaurForm(std::string newBeastForm) {
+    _beastForm = newBeastForm;  // Assuming you want to set the new beast form
 }
 
-std::string decepticon::getPeaceful() const {
+std::string Decepticon::getPeaceful() const {
     return _peaceful;
 }
 
-void decepticon::setPeaceful(std::string newPeaceful) {
-    _peaceful = newPeaceful;
+void Decepticon::setPeaceful(std::string newPeaceful) {
+    _peaceful = newPeaceful;  // Assuming you want to set the new peaceful state
 }
 
-void decepticon::aboutRobot() {
+void Decepticon::aboutRobot() {
     std::cout << "BeastForm : " << _beastForm << "\n";
     std::cout << "Peace : " << _peaceful << "\n";
 }

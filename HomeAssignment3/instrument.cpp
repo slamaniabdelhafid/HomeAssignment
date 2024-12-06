@@ -2,18 +2,18 @@
 
 #include "instrument.h"
 
-std::string instrument::getName() const {
+std::string Instrument::getName() const {
     return _name;
 }
 
-void instrument::setName(const std::string& newName) {
+void Instrument::setName(const std::string& newName) {
     _name = newName;
 }
 
-int instrument::getSize() const {
+int Instrument::getSize() const {
     return _size;
 }
 
-void instrument::setSize(int newSize) {
+void Instrument::setSize(int newSize) {
     _size = newSize;
 }

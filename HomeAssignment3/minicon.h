@@ -6,25 +6,28 @@
 #include <iostream>
 #include <string>
 
-class minicon : public BaseTransformer {
+class Minicon : public BaseTransformer {
 private:
-    std::string _dinosaurForm;
-    std::string _dangerous;
+    std::string _blasterForm;  
+    std::string _instrument;    
 
 public:
     // +1 when an object is created
-    static int dinobotCounter;
-    // constructor
-    minicon();
-    // constructor with parameter
-    minicon(std::string dinosaur, std::string dangerous);
+    static int miniconCounter;  
 
-    std::string getDinosaurForm() const;
-    void setDinosaurForm(std::string newDinosaurForm);
+    // Constructor
+    Minicon();
 
-    std::string getDangerous() const;
-    void setDangerous(std::string newDangerous);
-    void aboutRobot() override;
+    // Constructor with parameters
+    Minicon(std::string blaster, std::string instrument);  
+
+    std::string getBlasterForm() const;  
+    void setBlasterForm(std::string newBlasterForm);  
+
+    std::string getInstrument() const;  
+    void setInstrument(std::string newInstrument);  
+
+    void aboutRobot() override;  
 };
 
 #endif
