@@ -1,22 +1,23 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
-#include "blaster.h"
 
-// Constructors
-Blaster::Blaster() : _power(0), _capacity(0) {}
+#include "blaster.h"  
 
-Blaster::Blaster(unsigned int power, unsigned int capacity)
-    : _power(power), _capacity(capacity) {}
+double Blaster::getCapacity() 
+{
+    return _capacity;
+}
 
-// Getters
-unsigned int Blaster::getPower() const { return _power; }
-unsigned int Blaster::getCapacity() const { return _capacity; }
+void Blaster::setCapacity(double newCapacity)  
+{
+    _capacity = newCapacity;
+}
 
-// Methods
-void Blaster::fire() {
-    if (_capacity > 0) {
-        std::cout << "Firing blaster with power: " << _power << std::endl;
-        _capacity--;
-    } else {
-        std::cout << "Blaster is out of ammo!" << std::endl;
-    }
+std::string Blaster::getSpeed()  
+{
+    return _speed;
+}
+
+void Blaster::setSpeed(std::string& newSpeed)  
+{
+    _speed = newSpeed;
 }

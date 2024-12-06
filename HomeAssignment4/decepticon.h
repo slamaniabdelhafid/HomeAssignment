@@ -1,25 +1,33 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
-#ifndef DECEPTICON_H
+
+#include "Transformers.h"
+#ifndef DECEPTICON_H  
 #define DECEPTICON_H
+#include <iostream>
+#include <string>
 
-#include "transformer.h"
+class Decepticon : public BaseTransformer  
+{
+    private:
+    std::string _beastForm;
+    std::string _peaceful;
 
-class Decepticon : public Transformer {
-private:
-    std::string _stealthAbility;
+    public:
+    //constructors
+    Decepticon();  
 
-public:
-    // Overloaded constructors
-    Decepticon();
-    explicit Decepticon(const std::string &name);
-    Decepticon(const std::string &name, const std::string &stealthAbility, 
-               unsigned int level, unsigned int strength, unsigned int fuel, unsigned int ammo);
+    bool operator <(const Decepticon& other) const;  
+    bool operator >(const Decepticon& other) const;  
 
-    // Getters
-    std::string getStealthAbility() const;
+    Decepticon(std::string beast, std::string peace);  
+    std::string getBeastForm() const;
 
-    // Output stream operator
-    friend std::ostream& operator<<(std::ostream& os, const Decepticon& decepticon);
+    void setBeastForm(std::string newBeastForm);
+    std::string getPeaceful() const;
+    void setPeaceful(std::string newPeaceful);
+    void aboutRobot() override;  
 };
 
-#endif // DECEPTICON_H
+std::ostream& operator<<(std::ostream& os, const Decepticon& dcon);  
+
+#endif

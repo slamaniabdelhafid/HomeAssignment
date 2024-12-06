@@ -1,25 +1,41 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
-#ifndef MINICON_H
+
+#include "Transformers.h"
+#ifndef MINICON_H  
 #define MINICON_H
+#include <iostream>
+#include <string>
 
-#include "transformer.h"
+class Minicon : public BaseTransformer  
+{
+    private:
+    std::string _dinosaurForm;
+    std::string _dangerous;
 
-class Minicon : public Transformer {
-private:
-    std::string _specialAbility;
+    public:
+    //+1 when an object is created
+    static int miniconCounter;  
 
-public:
-    // Overloaded constructors
-    Minicon();
-    explicit Minicon(const std::string &name);
-    Minicon(const std::string &name, const std::string &specialAbility, 
-            unsigned int level, unsigned int strength, unsigned int fuel, unsigned int ammo);
+    //constructor
+    Minicon();  
 
-    // Getters
-    std::string getSpecialAbility() const;
+    //constructor with parameters
+    Minicon(std::string dinosaur, std::string dangerous);  
 
-    // Output stream operator
-    friend std::ostream& operator<<(std::ostream& os, const Minicon& minicon);
+    //comparison operators
+    bool operator<(const Minicon& other) const;  
+    bool operator>(const Minicon& other) const;  
+
+    //get/set methods
+    std::string getDinosaurForm() const;  
+    void setDinosaurForm(std::string newDinosaurForm);  
+    std::string getDangerous() const;  
+    void setDangerous(std::string newDangerous);  
+
+    //information about the transformer
+    void aboutRobot() override;  
 };
 
-#endif // MINICON_H
+std::ostream& operator<<(std::ostream& os, const Minicon& dino);  
+
+#endif

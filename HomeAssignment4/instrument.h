@@ -1,25 +1,22 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
-#ifndef INSTRUMENT_H
+
+
+#ifndef INSTRUMENT_H  
 #define INSTRUMENT_H
-
 #include <iostream>
+#include <string>
 
-class Instrument {
-private:
-    std::string _type;
-    unsigned int _power;
+class Instrument 
+{
+    private:
+    std::string _name;
+    int _size;
 
-public:
-    // Constructors
-    Instrument();
-    Instrument(const std::string &type, unsigned int power);
+    public:
+    std::string getName() const;
 
-    // Getters
-    std::string getType() const;
-    unsigned int getPower() const;
-
-    // Methods
-    void play();
+    void setName(const std::string& newName);
+    int getSize() const;
+    void setSize(int newSize);
 };
-
-#endif // INSTRUMENT_H
+#endif

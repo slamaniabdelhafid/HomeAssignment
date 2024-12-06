@@ -1,31 +1,36 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
+
+#include "Transformers.h"
 #ifndef AUTOBOT_H
 #define AUTOBOT_H
+#include <iostream>
+#include <string>
 
-#include "transformer.h"
-#include "blaster.h"
 
-class Autobot : public Transformer {
-private:
-    std::string _color;
-    Blaster _weapon;
-
-public:
-    // Overloaded constructors
+class Autobot : public BaseTransformer
+{
+    private:
+    std::string _moralAlignment;
+    std::string _groundVehicle;
+    
+    public:
+    static int  autobotCounter;
+    //constructor
     Autobot();
-    explicit Autobot(const std::string &name);
-    Autobot(const std::string &name, const std::string &color, 
-            unsigned int powerOfBlaster, unsigned int capacityOfBlaster);
+    //constructor with parameter
+    Autobot(std::string moral, std::string vehicle);
 
-    // Getters and Setters
-    void setColor(const std::string &color);
-    std::string getColor() const;
-
-    // Output stream operator
-    friend std::ostream& operator<<(std::ostream& os, const Autobot& autobot);
-
-    // Comparison operator
+    bool operator<(const Autobot& other) const;
     bool operator>(const Autobot& other) const;
+ 
+    std::string getMoralAlignemt() const;
+    void setMoralAlignmet(std::string newMoralAlignment);
+
+    std:: string getGroundVehicle() const;
+    void setGroundVehicle(std::string newGroundVehicle);
+    void aboutRobot()  override;
 };
 
-#endif // AUTOBOT_H
+std::ostream& operator<<(std::ostream& os, const Autobot& abot);
+
+#endif

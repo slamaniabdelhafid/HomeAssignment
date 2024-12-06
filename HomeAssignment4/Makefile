@@ -1,37 +1,53 @@
-# Compiler
+PROJECT = transformers
+
+LIBPROJECT = $(PROJECT).a
+
+TESTPROJECT = test-$(PROJECT)
+
 CXX = g++
 
-# Compiler flags
-CXXFLAGS = -std=c++17 -Wall -Wextra -Werror -Wpedantic
+A = ar
 
-# Directories
-SRCDIR = .
-OBJDIR = .
+AFLAGS = rsv
 
-# Source files
-SRCS = main.cpp transformer.cpp autobot.cpp decepticon.cpp \
-       minicon.cpp instrument.cpp blade.cpp blaster.cpp test.cpp
+CCXFLAGS = -I. -std=c++17 -Wall -g -fPIC
 
-# Object files
-OBJS = $(SRCS:.cpp=.o)
+LDXXFLAGS = $(CCXFLAGS) -L. -l:$(LIBPROJECT)
 
-# Executable name
-TARGET = transformers_program
+LDGTESTFLAGS = $(LDXXFLAGS) -lgtest -lgtest_main -lpthread
 
-# Default target
-all: $(TARGET)
+DEPS=$(wildcard *.h)
 
-# Linking the program
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+OBJ=Transformers.o autobot.o minicon.o decepticon.o instrument.o blaster.o  # Changed from dinobot to minicon, predacon to decepticon, weapon to instrument, and memory to blaster
 
-# Compiling source files to object files
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+TEST-OBJ=test_transformers.o 
 
-# Clean up
+.PHONY: default
+
+default: all;
+
+%.o: %.cpp $(DEPS)
+	$(CXX) -c -o $@ $< $(CCXFLAGS)  # Fixed typo from CXXFLAGS to CCXFLAGS
+
+$(LIBPROJECT): $(OBJ)
+	$(A) $(AFLAGS) $@ $^
+
+$(PROJECT): main.o $(LIBPROJECT)
+	$(CXX) -o $@ main.o $(LDXXFLAGS)
+
+$(TESTPROJECT): $(LIBPROJECT) $(TEST-OBJ)
+	$(CXX) -o $@ $(TEST-OBJ) $(LDGTESTFLAGS)
+
+test: $(TESTPROJECT)
+
+all: $(PROJECT)
+
+.PHONY: clean
+
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f *.o
 
-# Phony targets
-.PHONY: all clean
+cleanall: clean
+	rm -f $(PROJECT)
+	rm -f $(LIBPROJECT)
+	rm -f $(TESTPROJECT)

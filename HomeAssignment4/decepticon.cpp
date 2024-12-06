@@ -1,22 +1,62 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
+
 #include "decepticon.h"
 
-// Constructors
-Decepticon::Decepticon() : Transformer(), _stealthAbility("") {}
+Decepticon::Decepticon()
+{
 
-Decepticon::Decepticon(const std::string &name) 
-    : Transformer(name), _stealthAbility("") {}
+}
 
-Decepticon::Decepticon(const std::string &name, const std::string &stealthAbility, 
-                       unsigned int level, unsigned int strength, unsigned int fuel, unsigned int ammo)
-    : Transformer(name, level, strength, fuel, ammo), _stealthAbility(stealthAbility) {}
+Decepticon::Decepticon(std::string beast, std::string peace)
+{
+    _beastForm = beast;
+    _peaceful = peace;
+}
 
-// Getters
-std::string Decepticon::getStealthAbility() const { return _stealthAbility; }
+//set method
+void Decepticon::setBeastForm(std::string newBeastForm){
+    _beastForm = newBeastForm;
+}
+void Decepticon::setPeaceful(std::string newPeaceful){
+    _peaceful = newPeaceful;
+}
 
-// Output stream operator
-std::ostream& operator<<(std::ostream& os, const Decepticon& decepticon) {
-    os << static_cast<const Transformer&>(decepticon) 
-       << ", Stealth Ability: " << decepticon._stealthAbility;
+//comparison
+bool Decepticon::operator<(const Decepticon& other) const
+{
+    return _beastForm < other.getBeastForm();
+}
+
+bool Decepticon::operator>(const Decepticon& other) const
+{
+    return _peaceful > other.getPeaceful();
+}
+
+//get.set
+std::string Decepticon::getBeastForm() const
+{
+    return _beastForm;
+}
+
+void Decepticon::setBeastForm(std::string newBeastForm); 
+
+std::string Decepticon::getPeaceful() const
+{
+    return _peaceful;
+}
+
+void Decepticon::setPeaceful(std::string newPeaceful); 
+
+void Decepticon::aboutRobot()
+{
+    std::cout<<"BeastForm : "<<_beastForm<<"\n";
+    std::cout<<"Peace : "<<_peaceful<<"\n";
+}
+
+std::ostream& operator<<(std::ostream& os, const Decepticon& dcon)
+{
+    os << dcon.getBeastForm() << ' ';
+    os << dcon.getPeaceful() << ' ';
+
     return os;
 }

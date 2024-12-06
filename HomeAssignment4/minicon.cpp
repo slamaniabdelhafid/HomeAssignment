@@ -1,22 +1,63 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
-#include "minicon.h"
 
-// Constructors
-Minicon::Minicon() : Transformer(), _specialAbility("") {}
 
-Minicon::Minicon(const std::string &name) 
-    : Transformer(name), _specialAbility("") {}
+#include "minicon.h"  
+#include <string>
 
-Minicon::Minicon(const std::string &name, const std::string &specialAbility, 
-                 unsigned int level, unsigned int strength, unsigned int fuel, unsigned int ammo)
-    : Transformer(name, level, strength, fuel, ammo), _specialAbility(specialAbility) {}
+Minicon::Minicon()  
+{
+    miniconCounter++;  
+}
 
-// Getters
-std::string Minicon::getSpecialAbility() const { return _specialAbility; }
+Minicon::Minicon(std::string dinosaur, std::string dangerous)  
+{
+    _dinosaurForm = dinosaur; 
+    _dangerous = dangerous;
+}
+
+// Set methods
+void Minicon::setDinosaurForm(std::string newDinosaurForm)  
+{
+    _dinosaurForm = newDinosaurForm;
+}
+
+void Minicon::setDangerous(std::string newDangerous)  
+{
+    _dangerous = newDangerous;
+}
+
+// Operation for comparison
+bool Minicon::operator <(const Minicon& other) const  
+{
+    return _dinosaurForm < other.getDinosaurForm();
+}
+
+bool Minicon::operator >(const Minicon& other) const  
+{
+    return _dangerous > other.getDangerous();
+}
+
+std::string Minicon::getDinosaurForm() const  
+{
+    return _dinosaurForm;
+}
+
+std::string Minicon::getDangerous() const  
+{
+    return _dangerous;
+}
+
+void Minicon::aboutRobot()  
+{
+    std::cout << "dinosaur " << _dinosaurForm << "\n";
+    std::cout << "dangerous : " << _dangerous << "\n";
+}
 
 // Output stream operator
-std::ostream& operator<<(std::ostream& os, const Minicon& minicon) {
-    os << static_cast<const Transformer&>(minicon) 
-       << ", Special Ability: " << minicon._specialAbility;
+std::ostream& operator<<(std::ostream& os, const Minicon& dino)  
+{
+    os << dino.getDinosaurForm() << ' ';
+    os << dino.getDangerous() << ' ';
+
     return os;
 }

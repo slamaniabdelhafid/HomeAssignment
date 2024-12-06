@@ -1,25 +1,21 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
-#ifndef BLASTER_H
-#define BLASTER_H
 
+#ifndef BLASTER_H  
+#define BLASTER_H
+#include <string>
 #include <iostream>
 
-class Blaster {
-private:
-    unsigned int _power;
-    unsigned int _capacity;
+class Blaster  
+{
+    public:
+    double _capacity;  
+    std::string _speed;  
 
-public:
-    // Constructors
-    Blaster();
-    Blaster(unsigned int power, unsigned int capacity);
+    void setCapacity(double newCapacity);
+    double getCapacity();
 
-    // Getters
-    unsigned int getPower() const;
-    unsigned int getCapacity() const;
-
-    // Methods
-    void fire();
+    void setSpeed(std::string& newSpeed);
+    std::string getSpeed();
 };
 
-#endif // BLASTER_H
+#endif
