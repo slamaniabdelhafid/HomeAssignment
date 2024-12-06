@@ -1,6 +1,6 @@
 /*slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru*/
 
-#include "Minicon.h"
+#include "minicon.h"
 
 int minicon::dinobotCounter = 0;
 
