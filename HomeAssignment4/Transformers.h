@@ -22,7 +22,11 @@ class BaseTransformer
     //default constructor.
     BaseTransformer();
     //constructor
-    BaseTransformer(std::string _name, std::string _brand, std::string _colour, std::string _shape, int _height, Blaster _blaster);  // Changed from Memory to Blaster
+    BaseTransformer(std::string _name, std::string _brand, std::string _colour, std::string _shape, int _height, Blaster _blaster);
+	//3
+	 BaseTransformer(int height);
+    
+	
     //destructor
     ~BaseTransformer();
 

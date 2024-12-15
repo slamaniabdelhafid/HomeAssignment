@@ -17,7 +17,9 @@ Autobot::Autobot()
 {
     autobotCounter++;
 }
-
+Autobot::Autobot(std::string  moral){
+    _moralAlignment = moral;
+	}
 //comparison operators
 bool Autobot::operator<(const Autobot& other) const
 {

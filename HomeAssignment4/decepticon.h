@@ -20,6 +20,9 @@ class Decepticon : public BaseTransformer
     bool operator >(const Decepticon& other) const;  
 
     Decepticon(std::string beast, std::string peace);  
+	//3
+	Decepticon(std::string beast);
+	
     std::string getBeastForm() const;
 
     void setBeastForm(std::string newBeastForm);

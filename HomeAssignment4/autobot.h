@@ -19,6 +19,8 @@ class Autobot : public BaseTransformer
     Autobot();
     //constructor with parameter
     Autobot(std::string moral, std::string vehicle);
+	//3
+	Autobot(std::string moral);
 
     bool operator<(const Autobot& other) const;
     bool operator>(const Autobot& other) const;

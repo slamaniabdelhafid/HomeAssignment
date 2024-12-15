@@ -12,6 +12,11 @@ Decepticon::Decepticon(std::string beast, std::string peace)
     _beastForm = beast;
     _peaceful = peace;
 }
+//3
+Decepticon::Decepticon(std::string beast)
+{
+    _beastForm = beast;
+}
 
 //set method
 void Decepticon::setBeastForm(std::string newBeastForm){

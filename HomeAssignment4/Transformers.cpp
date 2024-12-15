@@ -21,6 +21,11 @@ std::string shape, int height, Blaster blaster)
     _instrument = Instrument();
     *_blaster = blaster;
 }
+//3
+BaseTransformer::BaseTransformer(int height)
+{
+    _height = height;
+}
 
 //destructor
 BaseTransformer::~BaseTransformer()

@@ -15,7 +15,7 @@ A comprehensive object-oriented program simulating Transformers with advanced C+
    - astyle (optional, for code formatting)
 
 2. Compilation Commands:
-```bash
 make         # Compile the program
 make clean   # Remove compiled files
 make format  # Format code using astyle
+## run ./test-transformers  executable

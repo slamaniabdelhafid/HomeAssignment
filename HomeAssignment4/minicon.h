@@ -20,8 +20,10 @@ class Minicon : public BaseTransformer
     Minicon();  
 
     //constructor with parameters
-    Minicon(std::string dinosaur, std::string dangerous);  
-
+    Minicon(std::string dinosaur, std::string dangerous); 
+	//3  
+	Minicon(std::string dinosaur);
+	
     //comparison operators
     bool operator<(const Minicon& other) const;  
     bool operator>(const Minicon& other) const;  
