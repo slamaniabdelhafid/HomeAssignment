@@ -15,7 +15,7 @@ Decepticon::Decepticon(std::string beast, std::string peace)
 //3
 Decepticon::Decepticon(std::string beast)
 {
-    _beastForm = beast;
+Decepticon(beast, "l");
 }
 
 //set method

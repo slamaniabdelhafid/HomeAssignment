@@ -24,7 +24,8 @@ std::string shape, int height, Blaster blaster)
 //3
 BaseTransformer::BaseTransformer(int height)
 {
-    _height = height;
+	BaseTransformer("Faith","nobrand","black","s",height, Blaster());
+
 }
 
 //destructor

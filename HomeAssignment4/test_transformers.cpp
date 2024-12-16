@@ -47,12 +47,6 @@ TEST(DecepticonTest, decepticonGetName)
     EXPECT_EQ(decepticon.getName(),"Chidima");
 }
 
-int main(int argc, char **argv)
-{
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
- 
 //testing new comparison
 TEST(BaseTransformer, CheckComparison) {
     BaseTransformer trans1;
@@ -83,3 +77,19 @@ TEST(Minicon, CheckComparison) {
 
     ASSERT_FALSE(pn2 > pn1);
 } 
+TEST(Autobot, OutputStream) {
+    Autobot abot("120", "Truck");
+    
+    std::ostringstream oss; 
+    oss << abot; 
+
+    std::string expectedOutput = "120 Truck ";
+    EXPECT_EQ(oss.str(), expectedOutput);
+}
+
+int main(int argc, char **argv)
+{
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+ 

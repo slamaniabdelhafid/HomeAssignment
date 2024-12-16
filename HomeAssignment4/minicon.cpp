@@ -17,7 +17,7 @@ Minicon::Minicon(std::string dinosaur, std::string dangerous)
 //3
 Minicon::Minicon(std::string dinosaur)  
 {
-    _dinosaurForm = dinosaur;
+Minicon(dinosaur,"k");  
 }
 
 // Set methods

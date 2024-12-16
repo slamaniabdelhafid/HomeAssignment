@@ -10,9 +10,9 @@ A = ar
 
 AFLAGS = rsv
 
-CCXFLAGS = -I. -std=c++17 -Wall -g -fPIC
+CXXFLAGS = -I. -std=c++17 -Werror -Wpedantic -Wall -g -fPIC
 
-LDXXFLAGS = $(CCXFLAGS) -L. -l:$(LIBPROJECT)
+LDXXFLAGS = $(CXXFLAGS) -L. -l:$(LIBPROJECT)
 
 LDGTESTFLAGS = $(LDXXFLAGS) -lgtest -lgtest_main -lpthread
 
@@ -22,12 +22,14 @@ OBJ=Transformers.o autobot.o minicon.o decepticon.o instrument.o blaster.o  # Ch
 
 TEST-OBJ=test_transformers.o 
 
-.PHONY: default
+.PHONY: default all clean cleanall
 
-default: all;
+default: all
+
+all: $(PROJECT) $(TESTPROJECT)
 
 %.o: %.cpp $(DEPS)
-	$(CXX) -c -o $@ $< $(CCXFLAGS)  # Fixed typo from CXXFLAGS to CCXFLAGS
+	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 $(LIBPROJECT): $(OBJ)
 	$(A) $(AFLAGS) $@ $^
@@ -39,10 +41,6 @@ $(TESTPROJECT): $(LIBPROJECT) $(TEST-OBJ)
 	$(CXX) -o $@ $(TEST-OBJ) $(LDGTESTFLAGS)
 
 test: $(TESTPROJECT)
-
-all: $(PROJECT)
-
-.PHONY: clean
 
 clean:
 	rm -f *.o
