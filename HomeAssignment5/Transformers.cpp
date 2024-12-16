@@ -1,108 +1,146 @@
 /* slamani abdelhafid.  group 24.b83 . st130302@student.spbu.ru */
 
 #include "Transformers.h"
-#include "instrument.h" 
+#include "weapon.h"
 #include <string>
-#include <iostream> 
 
-// Constructor
-BaseTransformer::BaseTransformer() : _height(0), _blaster(nullptr) {}
+//constructor
+BaseTransformer::BaseTransformer()
+{
 
-BaseTransformer::BaseTransformer(std::string name, std::string brand, std::string colour,
-                                  std::string shape, int height, Blaster blaster) 
-    : _name(name), _brand(brand), _colour(colour), _shape(shape), _height(height), _blaster(new Blaster(blaster)) {
-    // Initialize the instrument
 }
 
-// Destructor
-BaseTransformer::~BaseTransformer() {
-    delete _blaster; // Clean up dynamically allocated memory
-    std::cout << "Destructor clears " << _name << std::endl;
+BaseTransformer:: BaseTransformer(std::string name, std::string brand, std::string colour,
+std:: string shape, int height, Memory memory)
+{
+    _name = name;
+    _brand = brand;
+    _colour = colour;
+    _shape = shape;
+    _height = height;
+    _weapon = Weapon();
+    *_memory = memory;
+}
+//third
+BaseTransformer::BaseTransformer(int height)
+{
+    _height = height;
 }
 
-// Information about the transformer
-void BaseTransformer::aboutRobot() {
-    std::cout << "Information about " << _name << "\n";
-    std::cout << "Brand : " << _brand << "\n";
-    std::cout << "Colour : " << _colour << "\n";
-    std::cout << "Shape : " << _shape << "\n";
-    std::cout << "Height : " << _height << "\n";
-}
+//destructor
+//BaseTransformer::~BaseTransformer()
+//{
+   // std::cout<<"destructor clears "<<std::endl;
+//} 
 
-// Get method, set method, and validation
-std::string BaseTransformer::getName() const {
-    return _name;
-}
 
-void BaseTransformer::setName(const std::string& newName) {
-    _name = newName;
-}
-
-bool BaseTransformer::isValidName() const {
-    return !_name.empty();
-}
-
-// Brand
-std::string BaseTransformer::getBrand() {
-    return _brand;
-}
-
-void BaseTransformer::setBrand(std::string newBrand) {
-    _brand = newBrand;
-}
-
-bool BaseTransformer::isValidBrand() const {
-    return !_brand.empty();
-}
-
-// Colour
-std::string BaseTransformer::getColour() {
-    return _colour;
-}
-
-void BaseTransformer::setColour(std::string newColour) {
-    _colour = newColour;
-}
-
-bool BaseTransformer::isValidColour() const {
-    return !_colour.empty();
-}
-
-// Shape
-std::string BaseTransformer::getShape() {
-    return _shape;
-}
-
-void BaseTransformer::setShape(std::string newShape) {
-    _shape = newShape; // Added implementation for setShape
-}
-
-bool BaseTransformer::isValidShape() const {
-    return !_shape.empty();
-}
-
-// Height
-int BaseTransformer::getHeight() {
-    return _height;
-}
-
-void BaseTransformer::setHeight(int newHeight) {
-    _height = newHeight;
-}
-
-bool BaseTransformer::isValidHeight() const {
-    return _height > 0; // Fixed the validation logic
-}
-
-// Implementing the virtual methods
+//virtual
 void BaseTransformer::transform() {
-    std::cout << "Transform method in BaseTransformer class" << std::endl;
+    std::cout << "Method 'Transform' of class 'Transformer'\n";
+    std::cout << "TRANSFORMING OF Transformer .......\n\n";
 }
 
 void BaseTransformer::openFire() {
-    std::cout << "OpenFire method in BaseTransformer class" << std::endl;
+    std::cout << "Method 'openFire' of class 'Transformer'\n";
+    std::cout << "Transformer, fireeee!!!\n\n";
 }
 
-void BaseTransformer::ultra() {
-    std::cout << "Ultra method in BaseTransformer class" << std::endl;
+void BaseTransformer::ulta() {
+    std::cout << "Method 'ulta' of class 'Transformer'\n";
+    std::cout << "MEGA ULTA OF Transformer! HIT!!!\n\n";
+}
+
+//information about the transformer
+void BaseTransformer :: aboutRobot()
+{
+    std::cout<<"Information about "<<_name<<"\n";
+    std::cout<<"Brand : "<<_brand<<"\n";
+    std::cout<<"Colour : "<<_colour<<"\n";
+    std::cout<<"Shape : "<<_shape<<"\n";
+    std::cout<<"Height :"<<_height<<"\n";
+}
+
+bool BaseTransformer::operator <(const BaseTransformer& other) const
+{
+    return _height < other._height;
+}
+bool BaseTransformer::operator >(const BaseTransformer& other) const
+{
+    return _height > other._height;
+}
+
+//get method set method and validation
+std::string BaseTransformer::getName() const
+{
+    return _name;
+}
+void BaseTransformer ::setName( const std::string& newName)
+{
+    _name = newName;
+}
+bool BaseTransformer :: isValidName() const
+{
+    return !_name.empty();
+}
+//brand
+std::string BaseTransformer:: getBrand()
+{
+    return _brand;
+}
+void BaseTransformer::setBrand(std::string newBrand)
+{
+    _brand = newBrand;
+}
+bool BaseTransformer :: isValidBrand() const
+{
+    return !_brand.empty();
+}
+std:: string BaseTransformer::getColour()
+{
+    return _colour;
+}
+void BaseTransformer::setColour(std::string newColour){
+    _colour = newColour;
+}
+bool BaseTransformer::isValidColour() const
+{
+    return !_colour.empty();
+}
+//shape
+std::string BaseTransformer :: getShape()
+{
+    return _shape;
+}
+void BaseTransformer::setShape(std::string newShape)
+{
+    
+}
+bool BaseTransformer::isValidShape() const
+{
+    return !_shape.empty();
+}
+//height
+int BaseTransformer::getHeight()
+{
+    return _height;
+}
+void BaseTransformer::setHeight(int newHeight)
+{
+    _height = newHeight;
+}
+bool BaseTransformer :: isValidHeight() const
+{
+    return !_height > 0;
+}
+
+//os
+std::ostream& operator<<(std::ostream& os, const BaseTransformer& trans)
+{
+    os << trans.getName() << ' ';
+    os << trans.isValidBrand() << ' ';
+    os << trans.isValidColour() << ' ';
+    os << trans.isValidShape() << ' ';
+    os << trans.isValidHeight() << ' ';
+
+    return os;
 }

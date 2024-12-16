@@ -10,21 +10,22 @@ A = ar
 
 AFLAGS = rsv
 
-CXXFLAGS = -I. -std=c++17 -Wall -g -fPIC
+CCXFLAGS = -I. -std=c++17 -Wall -g -fPIC
 
-LDXXFLAGS = $(CXXFLAGS) -L. -l:$(LIBPROJECT)
+LDXXFLAGS = $(CCXFLAGS) -L. -l:$(LIBPROJECT)
 
 LDGTESTFLAGS = $(LDXXFLAGS) -lgtest -lgtest_main -lpthread
 
-DEPS = $(wildcard *.h)
+DEPS=$(wildcard *.h)
 
-OBJ = Transformers.o decepticon.o minicon.o decepticon.o instrument.o blaster.o autobot.o
+OBJ=  Transformers.o autobot.o dinobot.o predacon.o weapon.o memory.o 
 
-TEST_OBJ = test_transformers.o 
+TEST-OBJ=test_transformers.o 
+
 
 .PHONY: default
 
-default: all
+default: all;
 
 %.o: %.cpp $(DEPS)
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
@@ -35,8 +36,9 @@ $(LIBPROJECT): $(OBJ)
 $(PROJECT): main.o $(LIBPROJECT)
 	$(CXX) -o $@ main.o $(LDXXFLAGS)
 
-$(TESTPROJECT): $(LIBPROJECT) $(TEST_OBJ)
-	$(CXX) -o $@ $(TEST_OBJ) $(LDGTESTFLAGS)
+
+$(TESTPROJECT): $(LIBPROJECT) $(TEST-OBJ)
+	$(CXX) -o $@ $(TEST-OBJ) $(LDGTESTFLAGS)
 
 test: $(TESTPROJECT)
 
