@@ -55,6 +55,7 @@ TEST(BaseTransformer, CheckComparison) {
     trans2.setHeight(5000);
 
     ASSERT_TRUE(trans1 < trans2);
+	ASSERT_FALSE(trans1 > trans2);
 }
 
 TEST(Autobot, CheckComparison) {
@@ -65,6 +66,7 @@ TEST(Autobot, CheckComparison) {
     int ab1 = stoi(abot1.getMoralAlignemt());
     int ab2 = stoi(abot2.getMoralAlignemt());
     ASSERT_TRUE(ab1 > ab2);
+	ASSERT_FALSE(ab1 < ab2);
 }
 
 TEST(Minicon, CheckComparison) {  
@@ -76,6 +78,7 @@ TEST(Minicon, CheckComparison) {
     int pn2 = stoi(pcon2.getPeaceful());
 
     ASSERT_FALSE(pn2 > pn1);
+	ASSERT_TRUE(pn2 < pn1);
 } 
 TEST(Autobot, OutputStream) {
     Autobot abot("120", "Truck");
@@ -84,6 +87,24 @@ TEST(Autobot, OutputStream) {
     oss << abot; 
 
     std::string expectedOutput = "120 Truck ";
+    EXPECT_EQ(oss.str(), expectedOutput);
+}
+TEST(Decepticon, OutputStreamDec) {
+    Decepticon decp("d", "p");
+    
+    std::ostringstream oss; 
+    oss << decp; 
+
+    std::string expectedOutput = "d p ";
+    EXPECT_EQ(oss.str(), expectedOutput);
+}
+TEST(Minicon, OutputStreamMin) {
+    Minicon mini("dino", "dang");
+    
+    std::ostringstream oss; 
+    oss << mini; 
+
+    std::string expectedOutput = "dino dang ";
     EXPECT_EQ(oss.str(), expectedOutput);
 }
 
